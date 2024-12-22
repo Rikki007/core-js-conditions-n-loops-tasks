@@ -357,8 +357,40 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  const arr = new Array(size);
+  for (let i = 0; i < size; i += 1) {
+    arr[i] = [];
+  }
+  let cur = 0;
+  let row = 0;
+  let revRow = size - 1;
+  let col = 0;
+  let revCol = size - 1;
+  while (row <= revRow && col <= revCol) {
+    for (let i = col; i <= revCol; i += 1) {
+      cur += 1;
+      arr[row][i] = cur;
+    }
+    row += 1;
+    for (let i = row; i <= revRow; i += 1) {
+      cur += 1;
+      arr[i][revCol] = cur;
+    }
+    revCol -= 1;
+    for (let i = revCol; i >= col; i -= 1) {
+      cur += 1;
+      arr[revRow][i] = cur;
+    }
+    revRow -= 1;
+
+    for (let i = revRow; i >= row; i -= 1) {
+      cur += 1;
+      arr[i][col] = cur;
+    }
+    col += 1;
+  }
+  return arr;
 }
 
 /**
@@ -396,6 +428,21 @@ function rotateMatrix(/* matrix */) {
  */
 function sortByAsc(/* arr */) {
   throw new Error('Not implemented');
+  // if (arr.length === 0) {
+  //   return [];
+  // }
+  // const lessArr = [];
+  // const moreArr = [];
+  // const pivot = arr[0];
+  // for (let i = 0; i < arr.length; i += 1) {
+  //   if (arr[i] < pivot) {
+  //     lessArr.push(arr[i]);
+  //   }
+  //   if (arr[i] >= pivot) {
+  //     moreArr.push(arr[i]);
+  //   }
+  // }
+  // return sortByAsc(lessArr).concat(pivot, sortByAsc(moreArr));
 }
 
 /**
